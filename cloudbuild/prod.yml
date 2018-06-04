@@ -10,12 +10,13 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ["pull", "us.gcr.io/$PROJECT_ID/stellar-core:prod-latest"]
   - name: 'gcr.io/cloud-builders/docker'
+    dir: "docker-stellar-core"
     args:
       - "build"
       - "--cache-from=us.gcr.io/$PROJECT_ID/stellar-core:prod-latest"
       - "--file=docker-stellar-core/Dockerfile"
       - "--tag=us.gcr.io/$PROJECT_ID/stellar-core:prod-latest"
-      - "--tag=us.gcr.io/$PROJECT_ID/stellar-core:`cat /tmp/commit_hash`"
+      - "--tag=us.gcr.io/$PROJECT_ID/stellar-core:$REVISION_ID"
       - "docker-stellar-core"
 images:
   - 'us.gcr.io/$PROJECT_ID/stellar-core'

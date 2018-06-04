@@ -10,7 +10,7 @@ steps:
       - "--file=docker-stellar-core/Dockerfile"
       - "--tag=us.gcr.io/$PROJECT_ID/stellar-core:prod-latest"
       - "--tag=us.gcr.io/$PROJECT_ID/stellar-core:$REVISION_ID"
-      - "."
+      - "docker-stellar-core"
 images:
   - 'us.gcr.io/$PROJECT_ID/stellar-core'
 timeout: 3600s

@@ -1,0 +1,4 @@
+[submodule "docker-stellar-core"]
+	path = docker-stellar-core
+	url = git@github.com:bloom-solutions/docker-stellar-core.git
+	branch = bloom_changes

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+git submodule update --remote
+COMMIT_HASH=`git -C docker-stellar-core rev-parse --verify HEAD`
+
+gcloud container builds submit docker-stellar-core \
+  --config=cloudbuild/$1.yml \
+  --substitutions=_COMMIT_HASH=$COMMIT_HASH \
+  --async

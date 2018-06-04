@@ -5,6 +5,8 @@ steps:
       - "update"
       - "--init"
       - "--remote"
+  - name: "ubuntu"
+    args: ["bash", "./cloudbuild/set_vars.sh"]
   - name: 'gcr.io/cloud-builders/docker'
     args: ["pull", "us.gcr.io/$PROJECT_ID/stellar-core:prod-latest"]
   - name: 'gcr.io/cloud-builders/docker'
@@ -13,7 +15,7 @@ steps:
       - "--cache-from=us.gcr.io/$PROJECT_ID/stellar-core:prod-latest"
       - "--file=docker-stellar-core/Dockerfile"
       - "--tag=us.gcr.io/$PROJECT_ID/stellar-core:prod-latest"
-      - "--tag=us.gcr.io/$PROJECT_ID/stellar-core:$REVISION_ID"
+      - "--tag=us.gcr.io/$PROJECT_ID/stellar-core:$COMMIT_HASH"
       - "docker-stellar-core"
 images:
   - 'us.gcr.io/$PROJECT_ID/stellar-core'

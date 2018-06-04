@@ -5,8 +5,6 @@ steps:
       - "update"
       - "--init"
       - "--remote"
-  - name: "ubuntu"
-    args: ["bash", "./cloudbuild/set_vars.sh"]
   - name: 'gcr.io/cloud-builders/docker'
     args: ["pull", "us.gcr.io/$PROJECT_ID/stellar-core:prod-latest"]
   - name: 'gcr.io/cloud-builders/docker'

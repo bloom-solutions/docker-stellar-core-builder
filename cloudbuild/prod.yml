@@ -4,6 +4,7 @@ steps:
       - "submodule"
       - "update"
       - "--init"
+      - "--remote"
   - name: 'gcr.io/cloud-builders/docker'
     args: ["pull", "us.gcr.io/$PROJECT_ID/stellar-core:prod-latest"]
   - name: 'gcr.io/cloud-builders/docker'
